@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projects = [
+  {
+    title: "互動式物理教學",
+    description: "整理力學、電磁學與波動主題，搭配清楚圖像與可操作的學習活動。",
+    href: "#projects",
+  },
+  {
+    title: "課堂教材設計",
+    description: "將概念、範例、探究問題與評量任務串成可直接用於教學的資源。",
+    href: "#teaching",
+  },
+  {
+    title: "學習歷程作品",
+    description: "收錄研究紀錄、專題成果與個人反思，呈現持續成長的軌跡。",
+    href: "#writing",
+  },
+];
+
+const timeline = [
+  "設計以學生理解為核心的課堂活動",
+  "製作可視化教材與物理模擬",
+  "整理教學筆記、作品與專題紀錄",
+];
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="個人網站 | 物理教學與作品集"
+  description="以 Astro 建立的個人網站，整理物理教學、專題作品與學習紀錄。"
+>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <nav class="site-nav" aria-label="主要導覽">
+        <a class="brand" href={base}>Physics Portfolio</a>
+        <div class="nav-links">
+          <a href="#about">關於</a>
+          <a href="#projects">作品</a>
+          <a href="#contact">聯絡</a>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Personal Site / Teaching Portfolio</p>
+          <h1 id="hero-title">用清楚的圖像與問題，讓物理變得可以靠近。</h1>
+          <p class="hero-text">
+            這裡可以放你的自我介紹、教學理念、教材整理、專題作品，以及你想讓訪客第一眼看見的故事。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">查看作品</a>
+            <a class="button secondary" href="#contact">聯絡我</a>
+          </div>
+        </div>
+
+        <div class="orbit-panel" aria-label="物理主題視覺">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+          <div class="nucleus"></div>
+          <span class="particle particle-one"></span>
+          <span class="particle particle-two"></span>
+          <span class="particle particle-three"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section two-column">
+      <div>
+        <p class="section-kicker">About</p>
+        <h2>關於這個網站</h2>
+      </div>
+      <div class="section-content">
+        <p>
+          這是一個 Astro 個人網站的起點。你可以把它改成教師履歷、作品集、研究整理、課程網站，
+          或任何適合公開呈現的個人頁面。
+        </p>
+        <ul class="check-list">
+          {timeline.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-heading">
+        <p class="section-kicker">Featured Work</p>
+        <h2>精選內容</h2>
+      </div>
+
+      <div class="project-grid">
+        {
+          projects.map((project) => (
+            <article class="project-card">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <a href={project.href}>了解更多</a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <div>
+        <p class="section-kicker">Contact</p>
+        <h2>保持聯繫</h2>
+      </div>
+      <p>
+        你可以在這裡放 Email、社群連結、GitHub、教學平台，或任何希望訪客前往的頁面。
+      </p>
+      <a class="button primary" href="mailto:hello@example.com">hello@example.com</a>
+    </section>
+  </main>
+</BaseLayout>
